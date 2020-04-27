@@ -2,6 +2,9 @@
 
 cd `dirname $0`
 
+ln -sfv `pwd`/.script/.bash_logout ~/
+ln -sfv `pwd`/.script/.bash_profile ~/
+ln -sfv `pwd`/.script/.bashrc ~/
 ln -sfv `pwd`/.script/.vimrc ~/
 ln -sfv `pwd`/.script/.xinitrc ~/
 
