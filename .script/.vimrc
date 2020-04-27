@@ -11,43 +11,69 @@ Plug 'rafi/awesome-vim-colorschemes'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-set noshowmode
 
 let g:lightline = {
-			\ 	'colorscheme': 'simpleblack',
+			\ 	'colorscheme': 'deus',
 			\ }
 
 let g:coc_global_extensions = [
 			\ 	'coc-pairs',
 			\ 	'coc-tsserver',
-			\ 	'coc-pyright',
+			\ 	'coc-python',
 			\ 	'coc-json',
+			\ 	'coc-prettier',
 			\ 	'coc-css'
       \ ]
-
-set updatetime=500
-
-" use Control Space for trigger completion (vim)
-inoremap <silent><expr> <c-@> coc#refresh()
-
-" use Alt h/j/k/l to navigate in insert mode
-" use Alt j/k to navigate the completion list (vim)
-inoremap <Esc>h <Left>
-inoremap <Esc>l <Right>
-"inoremap <expr> <Esc>j pumvisible() ? "\<C-n>" : "<Down>"
-"inoremap <expr> <Esc>k pumvisible() ? "\<C-p>" : "<Up>"
-inoremap <Esc>j <Down>
-inoremap <Esc>k <Up>
-
-" use Tab and Shift Tab to navigate the completion list
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" use Tab to select item in completion list
-inoremap <expr> <Tab> pumvisible() ? "\<Enter>" : "\<Tab>"
 
 " change cursor in insert mode
 au InsertEnter * silent execute "!echo -en \<esc>[5 q"
 au InsertLeave * silent execute "!echo -en \<esc>[2 q"
 
-colorscheme 256_noir
+colorscheme termschool
+
+filetype indent plugin on
+
+" use Control Space for trigger completion (vim)
+ino <silent><expr> <c-@> coc#refresh()
+" use Tab to select item in completion list
+ino <expr> <Tab> pumvisible() ? "\<Enter>" : "\<Tab>"
+
+cno JJ <C-c>
+cno jj <C-c>
+ino <Esc>h <Left>
+ino <Esc>l <Right>
+ino <Esc>j <Down>
+ino <Esc>k <Up>
+ino JJ <Esc>
+ino jj <Esc>
+map Y y$
+nno <C-L> :nohl<CR><C-L>
+nno <Space> @
+nno , @@
+
+set autoindent
+set backspace=indent,eol,start
+set cc=100
+set clipboard=unnamedplus
+set confirm
+set hidden
+set hlsearch
+set ignorecase
+set laststatus=2
+set mouse=a
+set nocompatible
+set noshowmode
+set nostartofline
+set number
+set pastetoggle=<F2>
+set shiftwidth=2
+set showcmd
+set smartcase
+set t_vb=
+set tabstop=2
+set timeoutlen=200
+set updatetime=500
+set visualbell
+set wildmenu
+
+syntax on
