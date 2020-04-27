@@ -1,3 +1,5 @@
 {
-	"suggest.noselect": false
+	"suggest.noselect": false,
+	"coc.preferences.formatOnSaveFiletypes": ["python"],
+  "python.formatting.provider": "black"
 }
