@@ -214,11 +214,13 @@ bindsym Control+Mod1+Sys_Req exec --no-startup-id maim -i $(xdotool getactivewin
 bindsym Control+Shift+Print exec --no-startup-id maim -s ~/Pictures/$(date +%s).jpg
 
 # others
-bindsym $mod+Control+l exec --no-startup-id i3lock -c 000000 && systemctl suspend
+bindsym $mod+Control+l exec --no-startup-id i3lock -c 000000
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Next workspace next
 bindsym $mod+Prior workspace prev
+bindsym $mod+Control+j workspace next
+bindsym $mod+Control+k workspace prev
 #workspace_auto_back_and_forth yes
 bindsym $mod+Control+Tab workspace back_and_forth
 
