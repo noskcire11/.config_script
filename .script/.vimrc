@@ -2,11 +2,12 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'scrooloose/nerdtree'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -48,6 +49,7 @@ ino JJ <Esc>
 ino jj <Esc>
 map Y y$
 nno <C-L> :nohl<CR><C-L>
+nno <F2> :Black<CR>
 nno <Space> @
 nno , @@
 
