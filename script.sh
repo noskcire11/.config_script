@@ -7,6 +7,7 @@ ln -sfv `pwd`/.script/.bash_profile $destination
 ln -sfv `pwd`/.script/.bashrc $destination
 ln -sfv `pwd`/.script/.vimrc $destination
 ln -sfv `pwd`/.script/.xinitrc $destination
+ln -sfv `pwd`/.script/.bin $destination
 
 destination=~/.vim/autoload
 mkdir -p $destination

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# auto unmount and delete the directory
+
+for dir in $@
+do
+	umount -v /mnt/$(basename $dir)
+
+	if [ $? -eq 0 ]
+	then
+		rm -rfv /mnt/$(basename $dir)
+	fi
+done
+
+

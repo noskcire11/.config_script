@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# auto create directory then mount it
+
+if [ $# -eq 0 ]
+then
+	mount
+	exit
+fi
+
+for dir in $@
+do
+	if [ -e /dev/$(basename $dir) ]
+	then
+		mkdir -v /mnt/$(basename $dir)
+		mount /dev/$(basename $dir) /mnt/$(basename $dir) -v
+	else
+		echo 'failed'
+	fi
+done
