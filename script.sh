@@ -1,19 +1,37 @@
 #!/bin/bash
 
 cd `dirname $0`
+destination=~/
+ln -sfv `pwd`/.script/.bash_logout $destination
+ln -sfv `pwd`/.script/.bash_profile $destination
+ln -sfv `pwd`/.script/.bashrc $destination
+ln -sfv `pwd`/.script/.vimrc $destination
+ln -sfv `pwd`/.script/.xinitrc $destination
 
-ln -sfv `pwd`/.script/.bash_logout ~/
-ln -sfv `pwd`/.script/.bash_profile ~/
-ln -sfv `pwd`/.script/.bashrc ~/
-ln -sfv `pwd`/.script/.vimrc ~/
-ln -sfv `pwd`/.script/.xinitrc ~/
+destination=~/.vim/autoload
+mkdir -p $destination
+ln -sfv `pwd`/.script/plug.vim $destination
 
-mkdir -p ~/.config
-ln -sfv `pwd`/.script/i3 ~/.config/
-ln -sfv `pwd`/.script/i3blocks ~/.config/
-ln -sfv `pwd`/.script/i3status ~/.config/
-ln -sfv `pwd`/.script/termite ~/.config/
+destination=~/.vim/
+ln -sfv `pwd`/.script/coc-settings.json $destination
 
-mkdir -p ~/.vim/autoload
-ln -sfv `pwd`/.script/coc-settings.json ~/.vim/
-ln -sfv `pwd`/.script/plug.vim ~/.vim/autoload/
+destination=~/.config/
+mkdir -p $destination
+ln -sfv `pwd`/.script/i3 $destination
+ln -sfv `pwd`/.script/i3blocks $destination
+ln -sfv `pwd`/.script/i3blocks-custom $destination
+ln -sfv `pwd`/.script/i3status $destination
+ln -sfv `pwd`/.script/termite $destination
+
+destination=~/.config/i3blocks-contrib
+read -p 'clone or pull i3blocks-contrib? [y/N] ' input
+if [ $input = 'y' ] || [ $input = 'Y' ]
+then
+	if [ -d $destination ]
+	then
+		cd $destination
+		git pull
+	else
+		git clone https://github.com/vivien/i3blocks-contrib.git $destination
+	fi
+fi

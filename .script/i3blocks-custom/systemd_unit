@@ -1,0 +1,50 @@
+#!/bin/bash
+
+
+if [[ -z $FAILED_COLOR ]]
+then
+	FAILED_COLOR=red
+fi
+
+if [[ -z $INACTIVE_COLOR ]]
+then
+	INACTIVE_COLOR=orange
+fi
+
+if [[ -n $ACTIVE_COLOR ]]
+then
+	ACTIVE_COLOR=" color='$ACTIVE_COLOR'"
+fi
+
+status="systemctl status $UNIT_NAME"
+command="systemctl"
+
+if [[ $USER_UNIT == "true" ]]
+then
+	status="${status} --user"
+	command="${command} --user"
+else
+	command="sudo ${command}"
+fi
+
+status=$($status | head -n3 | tail -n1 | awk '{ print $2 }')
+
+if [[ $status == "active" ]]
+then
+	echo "<span${ACTIVE_COLOR}>$UNIT_NAME</span>"
+	command="${command} stop"
+else
+	if [[ $status == "failed" ]]
+	then
+		echo "<span color='$FAILED_COLOR'>$UNIT_NAME</span>"
+	elif [[ $status == "inactive" ]]
+	then
+		echo "<span color='$INACTIVE_COLOR'>$UNIT_NAME</span>"
+	fi
+	command="${command} start"
+fi
+
+case "$BLOCK_BUTTON" in
+  1|2|3) 
+		$command $UNIT_NAME
+esac

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [[ -z "$INTERFACE" ]] ; then
+    INTERFACE="${BLOCK_INSTANCE:-wlp3s0}"
+fi
+
+USE_PERCENT=${USE_PERCENT:-0}
+
+iw_output=$(iw dev $INTERFACE link)
+
+ssid=$(echo "$iw_output" | grep -Poe '(?<=SSID: ).*')
+dbm=$(echo "$iw_output" | grep -Poe '-\d{2}(?= dBm)')
+
+[[ -n "$dbm" ]] || exit 1
+
+if [[ $USE_PERCENT -eq 0 ]]; then
+    echo "$dbm dBm  $ssid"
+    echo "$dbm $ssid"
+else
+    if [[ "$dbm" -le -100 ]]; then
+        quality=0
+    elif [[ $dbm -ge -50 ]]; then
+        quality=100
+    else
+        quality=$((2 * (dbm + 100)))
+    fi
+    echo "$quality% $ssid"
+    echo "$quality% $ssid"
+fi
+
+if [[ $dbm -ge -55 ]]; then
+	echo "#c5e6c9"
+elif [[ $dbm -ge -60 ]]; then
+	echo "#c5e6c9"
+elif [[ $dbm -ge -70 ]]; then
+	echo "#c5e6c9"
+elif [[ $dbm -ge -80 ]]; then
+	echo "#FFAA00"
+else
+	echo "#FF0000"
+fi
