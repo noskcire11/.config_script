@@ -41,8 +41,8 @@ cursor_blink = off
 [colors]
 
 # special
-foreground      = #c5e6c9
-foreground_bold = #c5e6c9
+foreground      = #ffffff
+foreground_bold = #ffffff
 cursor          = rgb(150, 150, 150)
 background      = rgba(30, 30, 30, 0.75)
 
