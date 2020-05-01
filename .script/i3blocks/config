@@ -39,7 +39,7 @@ USE_PERCENT=1
 #[separator]
 
 [brightness]
-command=$I3_BLOCKS_CONTRIB_SCRIPT/backlight/backlight
+command=$I3_BLOCKS_CONTRIB_SCRIPT/backlight/backlight | awk '{ printf "%.0f%\n", $1 }'
 label=☀
 interval=once
 signal=10
