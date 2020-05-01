@@ -226,7 +226,7 @@ bindsym $mod+Control+Tab workspace back_and_forth
 
 
 # auto run
-exec_always --no-startup-id feh --bg-fill ~/Pictures/.wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/.wallpaper/wallpaper2.jpg
 exec --no-startup-id picom
 #exec --no-startup-id termite -t Welcome -e "$SHELL -c neofetch" --hold
 exec --no-startup-id termite -t Welcome -e "$SHELL -c 'neofetch; $SHELL;'"
