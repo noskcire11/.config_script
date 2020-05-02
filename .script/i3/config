@@ -225,7 +225,7 @@ bindsym Control+Mod1+Sys_Req exec --no-startup-id maim -i $(xdotool getactivewin
 bindsym Control+Shift+Print exec --no-startup-id maim -s ~/Pictures/$(date +%s).jpg
 
 # others
-bindsym $mod+Control+l exec --no-startup-id i3lock -c 000000
+bindsym $mod+Control+l exec --no-startup-id i3lock -c 000000 && xset dpms force off
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Next workspace next
