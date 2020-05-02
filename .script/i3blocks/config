@@ -1,9 +1,9 @@
 # We use the global settings as a shortcut to define our own separator.
 # Based on the default i3blocks config file.
-full_text=|
-align=center
-color=#c5e6c9
-separator_block_width=11
+full_text=
+#align=center
+#color=#c5e6c9
+#separator_block_width=11
 
 [vpn-ddv]
 command=$I3_BLOCKS_CUSTOM_SCRIPT/systemd_unit
@@ -11,10 +11,8 @@ markup=pango
 interval=1
 UNIT_NAME=vpn-ddv
 USER_UNIT=false
-ACTIVE_COLOR=#c5e6c9
 INACTIVE_COLOR=gray
 FAILED_COLOR=red
-[separator]
 
 #[bandwidth]
 #command=$I3_BLOCKS_CONTRIB_SCRIPT/bandwidth/bandwidth
@@ -23,7 +21,6 @@ FAILED_COLOR=red
 ##INLABEL=IN 
 ##OUTLABEL=OUT 
 ##TREAT_UNKNOWN_AS_UP=0
-#[separator]
 
 [essid]
 command=$I3_BLOCKS_CUSTOM_SCRIPT/essid
@@ -31,7 +28,6 @@ interval=2
 INTERFACE=wlp3s0
 LONG_FORMAT=${SYMB} ${SSID}
 SHORT_FORMAT=${SYMB} ${SSID}
-[separator]
 
 #[arch-updates]
 #command=$I3_BLOCKS_CONTRIB_SCRIPT/arch-update/arch-update
@@ -46,7 +42,6 @@ interval=once
 signal=10
 STEP_SIZE=2
 #USE_SUDO=0
-[separator]
 
 [volume-pulseaudio]
 command=$I3_BLOCKS_CUSTOM_SCRIPT/volume-pulseaudio
@@ -61,13 +56,11 @@ AUDIO_MUTED_SYMBOL=
 LONG_FORMAT=${SYMB}  ${VOL}%
 SHORT_FORMAT=${SYMB}  ${VOL}%
 SUBSCRIBE=1
-[separator]
 
 [battery]
 command=$I3_BLOCKS_CONTRIB_SCRIPT/battery2/battery2
 markup=pango
 interval=1
-[separator]
 
 #[calendar]
 #command=$I3_BLOCKS_CONTRIB_SCRIPT/rofi-calendar/rofi-calendar
@@ -75,7 +68,6 @@ interval=1
 #LABEL= 
 #DATEFTM= 
 ##SHORTFTM=+%d.%m.%Y
-#[separator]
 
 [time]
 command=$I3_BLOCKS_CONTRIB_SCRIPT/time/time
@@ -85,4 +77,3 @@ STRFTIME_FORMAT=%a, %d %B   %I:%M %p
 TZONES=$DEFAULT_TZ,Sweden
 TZ_LABELS=,Sweden
 [separator]
-full_text=
