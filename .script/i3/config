@@ -196,13 +196,13 @@ bindsym Control+XF86MonBrightnessDown exec --no-startup-id xbacklight -set 1 && 
 
 
 # volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -SIGRTMIN+11 i3blocks
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% && pactl set-sink-mute 0 0 && pkill -SIGRTMIN+11 i3blocks
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% && pkill -SIGRTMIN+11 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10% && pactl set-sink-mute 0 0 && pkill -SIGRTMIN+11 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10% && pkill -SIGRTMIN+11 i3blocks
-bindsym Control+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +50% && pactl set-sink-mute 0 0 && pkill -SIGRTMIN+11 i3blocks
-bindsym Control+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -50% && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% && pactl set-sink-mute 0 0
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10% && pactl set-sink-mute 0 0
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
+bindsym Control+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +50% && pactl set-sink-mute 0 0
+bindsym Control+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -50%
 
 # printscreen
 bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png

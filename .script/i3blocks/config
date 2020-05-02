@@ -47,15 +47,19 @@ STEP_SIZE=2
 #USE_SUDO=0
 [separator]
 
-[volume]
-command=$I3_BLOCKS_CONTRIB_SCRIPT/volume/volume
-LABEL=♪ 
-#LABEL=VOL 
-interval=once
-signal=11
-#STEP=5%
-#MIXER=[determined automatically]
-#SCONTROL=[determined automatically]
+[volume-pulseaudio]
+command=$I3_BLOCKS_CUSTOM_SCRIPT/volume-pulseaudio
+interval=persist
+AUDIO_HIGH_SYMBOL=
+AUDIO_MED_SYMBOL=
+AUDIO_MED_THRESH=90
+AUDIO_LOW_SYMBOL=
+AUDIO_LOW_THRESH=40
+AUDIO_ZERO_SYMBOL=
+AUDIO_MUTED_SYMBOL=
+LONG_FORMAT=${SYMB} ${VOL}%
+SHORT_FORMAT=${SYMB} ${VOL}%
+SUBSCRIBE=1
 [separator]
 
 [battery]
