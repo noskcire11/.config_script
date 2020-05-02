@@ -1,41 +1,34 @@
 #!/bin/bash
 
-if [[ -z "$INTERFACE" ]] ; then
-    INTERFACE="${BLOCK_INSTANCE:-wlp3s0}"
-fi
+set -a
 
-USE_PERCENT=${USE_PERCENT:-0}
+ESSID_HIGH_SYMBOL=${ESSID_HIGH_SYMBOL:-' '}
 
-iw_output=$(iw dev $INTERFACE link)
+ESSID_MED_THRESH=${ESSID_MED_THRESH:--50}
+ESSID_MED_SYMBOL=${ESSID_MED_SYMBOL:-' '}
 
-ssid=$(echo "$iw_output" | grep -Poe '(?<=SSID: ).*')
-dbm=$(echo "$iw_output" | grep -Poe '-\d{2}(?= dBm)')
+ESSID_LOW_THRESH=${ESSID_LOW_THRESH:--70}
+ESSID_LOW_SYMBOL=${ESSID_LOW_SYMBOL:-' '}
 
-[[ -n "$dbm" ]] || exit 1
+ESSID_NOT_AVAILABLE_SYMBOL=${ESSID_NOT_AVAILABLE_SYMBOL:-' '}
 
-if [[ $USE_PERCENT -eq 0 ]]; then
-    echo "$dbm dBm  $ssid"
-    echo "$dbm $ssid"
-else
-    if [[ "$dbm" -le -100 ]]; then
-        quality=0
-    elif [[ $dbm -ge -50 ]]; then
-        quality=100
-    else
-        quality=$((2 * (dbm + 100)))
-    fi
-    echo "$quality% $ssid"
-    echo "$quality% $ssid"
-fi
+INTERFACE="${INTERFACE:-wlp3s0}"
 
-if [[ $dbm -ge -55 ]]; then
-	echo "#c5e6c9"
-elif [[ $dbm -ge -60 ]]; then
-	echo "#c5e6c9"
-elif [[ $dbm -ge -70 ]]; then
-	echo "#c5e6c9"
-elif [[ $dbm -ge -80 ]]; then
-	echo "#FFAA00"
-else
-	echo "#FF0000"
-fi
+OUTPUT=$(iw dev $INTERFACE link)
+
+SSID=$(echo "$OUTPUT" | grep -Poe '(?<=SSID: ).*')
+dBm=$(echo "$OUTPUT" | grep -Poe '-\d{2}(?= dBm)')
+
+function print_format {
+    echo "$1" | envsubst '${SYMB}${dBm}${SSID}'
+}
+
+SYMB=$ESSID_NOT_AVAILABLE_SYMBOL
+[[ -n "$dBm" ]] || (print_format '${SYMB}' && exit 1)
+
+SYMB=$ESSID_HIGH_SYMBOL
+[[ $dBm -le $ESSID_MED_THRESH ]] && SYMB=$ESSID_MED_SYMBOL
+[[ $dBm -le $ESSID_LOW_THRESH ]] && SYMB=$ESSID_LOW_SYMBOL
+
+print_format "$LONG_FORMAT"
+print_format "$SHORT_FORMAT"
