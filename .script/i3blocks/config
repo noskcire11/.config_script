@@ -73,7 +73,6 @@ interval=1
 command=$I3_BLOCKS_CONTRIB_SCRIPT/time/time
 interval=1
 #TZ_FILE=~/.tz
-STRFTIME_FORMAT=%a, %d %B   %I:%M %p
-TZONES=$DEFAULT_TZ,Sweden
-TZ_LABELS=,Sweden
-[separator]
+STRFTIME_FORMAT=%a, %d %B   %I:%M %p   
+TZONES=$DEFAULT_TZ,Europe/Stockholm
+TZ_LABELS=,Stockholm

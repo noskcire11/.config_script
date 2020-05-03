@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# auto unmount and delete the directory
+# umount and auto delete the directory
 
 for dir in $@
 do
