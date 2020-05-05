@@ -1,15 +1,8 @@
 #!/bin/bash
 
-
-if [[ -z $FAILED_COLOR ]]
-then
-	FAILED_COLOR=red
-fi
-
-if [[ -z $INACTIVE_COLOR ]]
-then
-	INACTIVE_COLOR=orange
-fi
+FAILED_COLOR=${FAILED_COLOR:-red}
+INACTIVE_COLOR=${INACTIVE_COLOR:-orange}
+FORMAT=${FORMAT:-$UNIT_NAME}
 
 if [[ -n $ACTIVE_COLOR ]]
 then
@@ -31,15 +24,15 @@ status=$($status | head -n3 | tail -n1 | awk '{ print $2 }')
 
 if [[ $status == "active" ]]
 then
-	echo "<span${ACTIVE_COLOR}>$UNIT_NAME</span>"
+	echo "<span${ACTIVE_COLOR}>$FORMAT</span>"
 	command="${command} stop"
 else
 	if [[ $status == "failed" ]]
 	then
-		echo "<span color='$FAILED_COLOR'>$UNIT_NAME</span>"
+		echo "<span color='$FAILED_COLOR'>$FORMAT</span>"
 	elif [[ $status == "inactive" ]]
 	then
-		echo "<span color='$INACTIVE_COLOR'>$UNIT_NAME</span>"
+		echo "<span color='$INACTIVE_COLOR'>$FORMAT</span>"
 	fi
 	command="${command} start"
 fi

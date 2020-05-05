@@ -10,6 +10,7 @@ command=$I3_BLOCKS_CUSTOM_SCRIPT/systemd_unit
 markup=pango
 interval=1
 UNIT_NAME=vpn-ddv
+FORMAT= VPN
 USER_UNIT=false
 INACTIVE_COLOR=gray
 FAILED_COLOR=red
