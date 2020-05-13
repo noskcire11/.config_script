@@ -5,6 +5,26 @@ full_text=
 #color=#c5e6c9
 #separator_block_width=11
 
+[airflow-webserver]
+command=$I3_BLOCKS_CUSTOM_SCRIPT/systemd_unit
+markup=pango
+interval=5
+UNIT_NAME=airflow-webserver
+FORMAT= airflow-webserver
+USER_UNIT=true
+INACTIVE_COLOR=gray
+FAILED_COLOR=red
+
+[airflow-scheduler]
+command=$I3_BLOCKS_CUSTOM_SCRIPT/systemd_unit
+markup=pango
+interval=5
+UNIT_NAME=airflow-scheduler
+FORMAT= airflow-scheduler
+USER_UNIT=true
+INACTIVE_COLOR=gray
+FAILED_COLOR=red
+
 [vpn-ddv]
 command=$I3_BLOCKS_CUSTOM_SCRIPT/systemd_unit
 markup=pango
