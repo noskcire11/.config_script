@@ -30,7 +30,7 @@ let g:coc_global_extensions = [
 au InsertEnter * silent execute "!echo -en \<esc>[5 q"
 au InsertLeave * silent execute "!echo -en \<esc>[2 q"
 
-colorscheme termschool
+colorscheme tender
 
 filetype indent plugin on
 
@@ -55,7 +55,6 @@ nno , @@
 
 set autoindent
 set backspace=indent,eol,start
-set cc=100
 set clipboard=unnamedplus
 set confirm
 set hidden
